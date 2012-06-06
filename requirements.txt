@@ -14,3 +14,4 @@ meld3==0.6.8
 psycopg2==2.4.5
 python-dateutil==1.5
 supervisor==3.0a12
+dj-database-url==0.2.0
