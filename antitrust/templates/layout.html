@@ -2,11 +2,7 @@
 <html lang="en">
   <head>
     <title>{% block title %}Antitrust{% endblock %}</title>
-    {% if debug %}
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
-    {% else %}
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" />
-    {% endif %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap{% if debug %}.min{% endif %}.css" />
   </head>
   <body>
     <div class="navbar">
