@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'djcelery',
     'djkombu',
     'gunicorn',
+    'antitrust',
 )
 
 # A sample logging configuration. The only tangible logging

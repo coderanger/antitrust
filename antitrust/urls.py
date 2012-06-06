@@ -4,10 +4,11 @@ from django.conf.urls import patterns, include, url
 # from django.contrib import admin
 # admin.autodiscover()
 
+import antitrust.views
+
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'antitrust.views.home', name='home'),
-    # url(r'^antitrust/', include('antitrust.foo.urls')),
+    url(r'^$', antitrust.views.index, name='index'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
