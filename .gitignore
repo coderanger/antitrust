@@ -1,0 +1,7 @@
+*.pyc
+*.pyo
+celerybeat-schedule
+supervisord.log
+supervisord.pid
+
+.secret_key
