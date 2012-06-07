@@ -127,7 +127,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -140,7 +140,7 @@ INSTALLED_APPS = (
     'gunicorn',
     'south',
     'antitrust',
-)
+]
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -178,3 +178,7 @@ CELERY_RESULT_DBURI = DATABASES['default']
 
 EVE_API_KEY_ID = os.environ.get('EVE_API_KEY_ID')
 EVE_API_VCODE = os.environ.get('EVE_API_VCODE')
+
+SENTRY_DSN = os.environ.get('SENTRY_DSN')
+if SENTRY_DSN:
+    INSTALLED_APPS.append('raven.contrib.django')
