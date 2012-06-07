@@ -175,6 +175,7 @@ import djcelery
 djcelery.setup_loader()
 BROKER_BACKEND = "djkombu.transport.DatabaseTransport"
 CELERY_RESULT_DBURI = DATABASES['default']
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 EVE_API_KEY_ID = os.environ.get('EVE_API_KEY_ID')
 EVE_API_VCODE = os.environ.get('EVE_API_VCODE')
