@@ -1,0 +1,54 @@
+{
+    "2389": {
+        "name": "Plasmoids",
+        "eve_group_id": "1042"
+    },
+    "2390": {
+        "name": "Electrolytes",
+        "eve_group_id": "1042"
+    },
+    "2392": {
+        "name": "Oxidizing Compound",
+        "eve_group_id": "1042"
+    },
+    "2393": {
+        "name": "Bacteria",
+        "eve_group_id": "1042"
+    },
+    "2395": {
+        "name": "Proteins",
+        "eve_group_id": "1042"
+    },
+    "2396": {
+        "name": "Biofuels",
+        "eve_group_id": "1042"
+    },
+    "2397": {
+        "name": "Industrial Fibers",
+        "eve_group_id": "1042"
+    },
+    "2398": {
+        "name": "Reactive Metals",
+        "eve_group_id": "1042"
+    },
+    "2399": {
+        "name": "Precious Metals",
+        "eve_group_id": "1042"
+    },
+    "2400": {
+        "name": "Toxic Metals",
+        "eve_group_id": "1042"
+    },
+    "2401": {
+        "name": "Chiral Structures",
+        "eve_group_id": "1042"
+    },
+    "3779": {
+        "name": "Biomass",
+        "eve_group_id": "1042"
+    },
+    "9828": {
+        "name": "Silicon",
+        "eve_group_id": "1042"
+    }
+}

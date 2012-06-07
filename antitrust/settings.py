@@ -2,11 +2,13 @@
 
 import os
 import dj_database_url
+from datetime import timedelta
 
 PROJECT_ROOT = os.path.abspath(os.path.join(__file__, '..', '..'))
+ENVIRONMENT = os.environ.get('DJANGO_ENVIRONMENT', 'development')
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+DEBUG = ENVIRONMENT == 'development'
+TEMPLATE_DEBUG = True
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -15,7 +17,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://localhost'),
+    'default': dj_database_url.config(default='postgres://localhost/antitrust'),
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -62,8 +64,9 @@ STATIC_ROOT = ''
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
-if os.environ.get('DJANGO_USE_S3'):
+if ENVIRONMENT == 'production':
     STATIC_URL = 'https://s3.amazonaws.com/antitrust/'
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -80,8 +83,6 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'antitrust'
@@ -133,13 +134,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admin',
     'djcelery',
     'djkombu',
     'gunicorn',
+    'south',
     'antitrust',
 )
 
@@ -176,3 +175,6 @@ import djcelery
 djcelery.setup_loader()
 BROKER_BACKEND = "djkombu.transport.DatabaseTransport"
 CELERY_RESULT_DBURI = DATABASES['default']
+
+EVE_API_KEY_ID = os.environ.get('EVE_API_KEY_ID')
+EVE_API_VCODE = os.environ.get('EVE_API_VCODE')
