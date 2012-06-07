@@ -1,0 +1,107 @@
+[
+  {
+    "pk": 2, 
+    "model": "djcelery.intervalschedule", 
+    "fields": {
+      "every": 6, 
+      "period": "hours"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "djcelery.crontabschedule", 
+    "fields": {
+      "day_of_week": "*", 
+      "hour": "4", 
+      "minute": "0"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "djcelery.crontabschedule", 
+    "fields": {
+      "day_of_week": "*", 
+      "hour": "4", 
+      "minute": "0"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "djcelery.crontabschedule", 
+    "fields": {
+      "day_of_week": "*", 
+      "hour": "4", 
+      "minute": "0"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "djcelery.periodictasks", 
+    "fields": {
+      "last_update": "2012-06-07T06:38:12.463Z"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "djcelery.periodictask", 
+    "fields": {
+      "task": "antitrust.tasks.update_prices", 
+      "name": "Update P1 prices", 
+      "exchange": null, 
+      "last_run_at": null, 
+      "args": "[1042]", 
+      "enabled": true, 
+      "routing_key": null, 
+      "crontab": null, 
+      "interval": 2, 
+      "queue": null, 
+      "total_run_count": 0, 
+      "expires": null, 
+      "kwargs": "{}", 
+      "date_changed": "2012-06-07T06:35:01.249Z", 
+      "description": ""
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "djcelery.periodictask", 
+    "fields": {
+      "task": "antitrust.tasks.update_assets", 
+      "name": "Update assets", 
+      "exchange": null, 
+      "last_run_at": null, 
+      "args": "[]", 
+      "enabled": true, 
+      "routing_key": null, 
+      "crontab": null, 
+      "interval": 2, 
+      "queue": null, 
+      "total_run_count": 0, 
+      "expires": null, 
+      "kwargs": "{}", 
+      "date_changed": "2012-06-07T06:35:16.646Z", 
+      "description": ""
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "djcelery.periodictask", 
+    "fields": {
+      "task": "celery.backend_cleanup", 
+      "name": "celery.backend_cleanup", 
+      "exchange": null, 
+      "last_run_at": null, 
+      "args": "[]", 
+      "enabled": true, 
+      "routing_key": null, 
+      "crontab": 3, 
+      "interval": null, 
+      "queue": null, 
+      "total_run_count": 0, 
+      "expires": null, 
+      "kwargs": "{}", 
+      "date_changed": "2012-06-07T06:38:12.468Z", 
+      "description": ""
+    }
+  }
+]
