@@ -28,3 +28,4 @@ rsa==3.0.1
 simplejson==2.4.0
 supervisor==3.0a12
 supervisor-stdout==0.1.1
+git+git://github.com/coderanger/django-bootstrap.git#egg=bootstrap

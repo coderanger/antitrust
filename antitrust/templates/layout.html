@@ -3,8 +3,10 @@
   <head>
     <title>{% block title %}Antitrust{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap{% if debug %}.min{% endif %}.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.switch.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/antitrust.css" />
   </head>
-  <body>
+  <body class="{% if request.META.HTTP_EVE_TRUSTED %}igb{% endif %}">
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
@@ -15,9 +17,24 @@
             </li>
             <li><a href="/pi/">PI</a></li>
           </ul>
+          <div class="trust-switch">
+            <span class="trust-label">Trust:</span>
+            <div class="switch" data-toggle="switch" data-checkbox="trust-switch-checkbox"></div>​
+          </div>
         </div>
       </div>
     </div>
-    {% block content %}{% endblock %}
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery{% if debug %}.min{% endif %}.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.switch.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/antitrust.js"></script>
+    <script type="text/javascript">
+    window.antitrust = {
+      base_uri: 'http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}',
+      trusted: {% if request.META.HTTP_EVE_TRUSTED == 'Yes' %}true{% else %}false{% endif %}
+    };
+    </script>
   </body>
 </html>

@@ -6,3 +6,4 @@ supervisord.pid
 
 .secret_key
 inc100-sqlite3-v2.db
+celeryev.pid

@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>PI Contract Calculator</h1>
+<form method="post" class="well form-horizontal">
+  {% csrf_token %}
+  {{ form }}
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+{% endblock %}

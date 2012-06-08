@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>PI Contract Invoice</h1>
+<table class="table table-striped table-bordered invoice">
+    <thead>
+    <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+    </tr>
+    </thead>
+{% for data in item_data %}
+    <tr>
+        <td class="name">{{ data.item.name }}</td>
+        <td class="quantity">{{ data.count }}</td>
+        <td class="subtotal">{{ data.subtotal }}</td>
+    </tr>
+{% endfor %}
+    <tr>
+        <td class="total-label" colspan="2">Total</td>
+        <td class="total">{{ total }}</td>
+    </tr>
+</table>
+
+<div class="well">
+    <p>
+        Ensure your items are in 6VD-T and create a contract for the amount above.
+    </p>
+    <p>
+        <button class="btn btn-primary" onclick="">Create Contract</button>
+    </p>
+</div>
+{% endblock %}
