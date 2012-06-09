@@ -185,7 +185,10 @@ LOGGING = {
 
 import djcelery
 djcelery.setup_loader()
-BROKER_BACKEND = "djkombu.transport.DatabaseTransport"
+if ENVIRONMENT == 'production':
+    BROKER_URL = os.environ['CLOUDAMQP_URL']
+else:
+    BROKER_BACKEND = "djkombu.transport.DatabaseTransport"
 CELERY_RESULT_DBURI = DATABASES['default']
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
