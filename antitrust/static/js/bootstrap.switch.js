@@ -23,6 +23,7 @@
       if ($el.attr(disabled) || $el.hasClass(disabled)) { return; }
       $el.toggleClass(active);
       if(this.$checkbox) { this.$checkbox.attr('checked', $el.hasClass(active)); this.$checkbox.trigger('change') }
+      $el.trigger('change', $el.hasClass(active));
     },
     addChildren: function () {
       var $el = this.$element,
