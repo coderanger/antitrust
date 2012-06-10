@@ -15,6 +15,8 @@ class EveItem(models.Model):
 
     @property
     def price(self):
+        if self.corp_optimal == 0:
+            return self.forge_prices.median_sell
         return (((((self.forge_prices.median_sell-Decimal('10'))))/Decimal('100'))*(Decimal('87.5')-(((self.corp_count/self.corp_optimal)-Decimal('0.5'))*Decimal('10')))) - (self.forge_prices.median_sell*((self.corp_count/self.corp_optimal)*Decimal('0.2')))
 
     @property
