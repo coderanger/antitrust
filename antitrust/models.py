@@ -13,7 +13,7 @@ class EveItem(models.Model):
 
     @property
     def price(self):
-        return self.forge_price
+        return self.forge_prices.median_sell
 
     @property
     def demand(self):
