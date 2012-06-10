@@ -24,7 +24,7 @@ class PIPurchaseForm(BootstrapForm):
                 field_args = {
                     'label': item.name,
                     'min_value': 0,
-                    'help_text': 'Price %s ISK'%item.price,
+                    'help_text': 'Price %0.2f ISK'%item.price,
                     'initial': 0,
                     'validators': [ItemValidator(item)],
                 }

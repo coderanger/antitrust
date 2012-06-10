@@ -14,12 +14,12 @@
     <tr>
         <td class="name">{{ data.item.name }}</td>
         <td class="quantity">{{ data.count }}</td>
-        <td class="subtotal">{{ data.subtotal }}</td>
+        <td class="subtotal">{{ data.subtotal|floatformat:2 }}</td>
     </tr>
 {% endfor %}
     <tr>
         <td class="total-label" colspan="2">Total</td>
-        <td class="total">{{ total }}</td>
+        <td class="total">{{ total|floatformat:2 }}</td>
     </tr>
 </table>
 
