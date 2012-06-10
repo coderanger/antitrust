@@ -4,15 +4,12 @@ from celery.task import task
 from django.conf import settings
 import requests
 
-from antitrust.models import EveItem
+from antitrust.models import EveItem, REGION_FORGE
 from antitrust.utils import update
 
-# Just hard-code this for the moment
-REGION_FORGE = 10000002
-
 @task
-def update_prices(group_id):
-    qs = EveItem.objects.filter(eve_group_id=group_id)
+def update_prices():
+    qs = EveItem.objects.all()
     params = {'regionlimit': REGION_FORGE, 'typeid': []}
     for item in qs:
         params['typeid'].append(item.eve_id)
@@ -21,9 +18,16 @@ def update_prices(group_id):
     tree = ElementTree.fromstring(response.text)
     prices = {}
     for item in tree.findall('.//type'):
-        prices[int(item.attrib['id'])] = item.find('./all/avg').text
+        prices[int(item.attrib['id'])] = {
+            'mean_sell': item.find('./sell/avg').text,
+            'mean_buy': item.find('./buy/avg').text,
+            'mean_all': item.find('./all/avg').text,
+            'median_sell': item.find('./sell/median').text,
+            'median_buy': item.find('./buy/median').text,
+            'median_all': item.find('./all/median').text,
+        }
     for item in qs:
-        update(item, forge_price=prices[item.eve_id])
+        update(item.forge_prices, **prices[item.eve_id])
 
 @task
 def update_assets():
