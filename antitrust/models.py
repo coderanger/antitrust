@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -13,7 +15,7 @@ class EveItem(models.Model):
 
     @property
     def price(self):
-        return (((((self.forge_prices.median_sell-10)))/100)*(87.5-(((self.corp_count/self.corp_optimal)-0.5)*10)))-(self.forge_prices.median_sell*((self.corp_count/self.corp_optimal)*0.2))
+        return (((((self.forge_prices.median_sell-10)))/100)*(87.5-(((self.corp_count/self.corp_optimal)-0.5)*10))) - (self.forge_prices.median_sell*((self.corp_count/self.corp_optimal)*Decimal('0.2')))
 
     @property
     def demand(self):
