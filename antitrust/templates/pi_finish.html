@@ -3,32 +3,45 @@
 {% block content %}
 <h1>PI Contract Invoice</h1>
 <table class="table table-striped table-bordered invoice">
-    <thead>
-    <tr>
-        <th>Item</th>
-        <th>Quantity</th>
-        <th>Subtotal</th>
-    </tr>
-    </thead>
+  <thead>
+  <tr>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+  </tr>
+  </thead>
 {% for data in item_data %}
-    <tr>
-        <td class="name">{{ data.item.name }}</td>
-        <td class="quantity">{{ data.count }}</td>
-        <td class="subtotal">{{ data.subtotal|floatformat:2 }}</td>
-    </tr>
+  <tr>
+    <td class="name">{{ data.item.name }}</td>
+    <td class="quantity">{{ data.count }}</td>
+    <td class="subtotal">{{ data.subtotal|floatformat:2 }}</td>
+  </tr>
 {% endfor %}
-    <tr>
-        <td class="total-label" colspan="2">Total</td>
-        <td class="total">{{ total|floatformat:2 }}</td>
-    </tr>
+  <tr>
+    <td class="total-label" colspan="2">Total</td>
+    <td class="total">{{ total|floatformat:2 }}</td>
+  </tr>
 </table>
 
 <div class="well">
-    <p>
-        Ensure your items are in 6VD-T and create a contract for the amount above.
-    </p>
-    <p>
-        <button class="btn btn-primary" onclick="">Create Contract</button>
-    </p>
+  <p>
+    Ensure your items are in 6VDT-H and create a contract for the amount above.
+  </p>
+  {% if nearest %}
+  <p class="igb-show">
+    <button id="create-contract" class="btn btn-primary" data-station="{{ nearest.nearest_station }}">Create Contract</button>
+  </p>
+  {% endif %}
 </div>
+{% endblock %}
+
+{% block footer_js %}
+<script type="text/javascript">
+$(function() {
+  $('#create-contract').click(function() {
+    CCPEVE.createContract(1, $(this).data('station'));
+    return false;
+  });
+});
+</script>
 {% endblock %}
