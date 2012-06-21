@@ -23,6 +23,8 @@ class EveItem(models.Model):
     def demand(self):
         if self.corp_count >= self.corp_optimal:
             return False
+        if self.price <= 0:
+            return False
         return True
 
     @property
