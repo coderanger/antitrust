@@ -38,5 +38,6 @@
       trusted: {% if request.META.HTTP_EVE_TRUSTED == 'Yes' %}true{% else %}false{% endif %}
     };
     </script>
+    {% block footer_js %}{% endblock %}
   </body>
 </html>
