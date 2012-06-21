@@ -28,7 +28,7 @@ class EveItem(models.Model):
     @property
     def forge_prices(self):
         if not hasattr(self, '_forge_prices'):
-            self._forge_prices, created = self.prices.get_or_create(region=10000002)
+            self._forge_prices, created = self.prices.get_or_create(region=REGION_FORGE)
         return self._forge_prices
 
 class EveItemPrices(models.Model):
