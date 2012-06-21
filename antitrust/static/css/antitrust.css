@@ -13,4 +13,9 @@ body.igb .trust-switch { display: block; }
   vertical-align: top;
 }
 
+#moneybags {
+  width: 200px;
+  height: 151px;
+}
+
 table.invoice .total-label { font-weight: bold; }
