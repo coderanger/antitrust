@@ -7,7 +7,7 @@ import requests
 from antitrust.models import EveItem, REGION_FORGE
 from antitrust.utils import update
 
-@task
+@task(ignore_result=True)
 def update_prices():
     qs = EveItem.objects.all()
     params = {'regionlimit': REGION_FORGE, 'typeid': []}
@@ -29,7 +29,7 @@ def update_prices():
     for item in qs:
         update(item.forge_prices, **prices[item.eve_id])
 
-@task
+@task(ignore_result=True)
 def update_assets():
     params = {'keyID': settings.EVE_API_KEY_ID, 'vCode': settings.EVE_API_VCODE}
     response = requests.get('https://api.eveonline.com/corp/AssetList.xml.aspx', params=params)
