@@ -7,7 +7,7 @@ def index(request):
     return TemplateResponse(request, 'index.html', {})
 
 def pi(request):
-    items = EveItem.objects.filter(eve_group_id=1042).order_by('name')
+    items = EveItem.objects.all().order_by('name')
     if request.method == 'POST':
         form = PIPurchaseForm(request.POST, items=items)
         if form.is_valid():
