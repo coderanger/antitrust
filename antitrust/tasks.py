@@ -26,6 +26,8 @@ def update_prices():
             'median_sell': item.find('./sell/median').text,
             'median_buy': item.find('./buy/median').text,
             'median_all': item.find('./all/median').text,
+            'min_sell': item.find('./sell/min').text,
+            'max_buy': item.find('./buy/max').text,
         }
     for item in qs:
         update(item.forge_prices, **prices[item.eve_id])
