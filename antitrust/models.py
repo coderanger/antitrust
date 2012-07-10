@@ -46,6 +46,8 @@ class EveItemPrices(models.Model):
     median_sell = models.DecimalField(_('Median Sell Price'), max_digits=7, decimal_places=2, default=0)
     median_buy = models.DecimalField(_('Median Buy Price'), max_digits=7, decimal_places=2, default=0)
     median_all = models.DecimalField(_('Median Price'), max_digits=7, decimal_places=2, default=0)
+    min_sell = models.DecimalField(_('Minimum Sell Price'), max_digits=7, decimal_places=2, default=0)
+    max_buy = models.DecimalField(_('Maximum Buy Price'), max_digits=7, decimal_places=2, default=0)
 
 class EveNearestStationManager(models.Manager):
     def get_for_system(self, system_id):
