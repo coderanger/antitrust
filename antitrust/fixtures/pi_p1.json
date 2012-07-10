@@ -50,5 +50,13 @@
     "9828": {
         "name": "Silicon",
         "eve_group_id": "1042"
+    },
+    "3683": {
+        "name": "Oxygen",
+        "eve_group_id": "280"
+    },
+    "3645": {
+        "name": "Water",
+        "eve_group_id": "280"
     }
 }
