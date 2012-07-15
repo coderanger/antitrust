@@ -187,6 +187,7 @@ import djcelery
 djcelery.setup_loader()
 if ENVIRONMENT == 'production':
     BROKER_URL = os.environ['CLOUDAMQP_URL']
+    BROKER_POOL_LIMIT = 2
 else:
     BROKER_BACKEND = "djkombu.transport.DatabaseTransport"
 CELERY_RESULT_DBURI = DATABASES['default']
